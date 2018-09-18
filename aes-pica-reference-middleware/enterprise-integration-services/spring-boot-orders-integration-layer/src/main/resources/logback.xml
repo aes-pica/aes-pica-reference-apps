@@ -25,7 +25,7 @@
 	</appender>
 	
 	<appender name="ALERT-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/tmp/spring-boot-integration-layer-gustos-preferencias/logs/alert-log.log</file>
+		<file>/tmp/spring-boot-orders-integration-layer/logs/alert-log.log</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
 		</encoder>

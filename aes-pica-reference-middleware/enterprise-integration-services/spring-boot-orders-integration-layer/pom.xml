@@ -110,7 +110,6 @@
 
 		<!-- active mq connector -->
 
-		<!--
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jms</artifactId>
@@ -135,8 +134,6 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-camel</artifactId>
 		</dependency>
-		
-		-->
 		
 		<!-- tcp ip connector -->
 		

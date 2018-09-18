@@ -16,8 +16,20 @@
 	<camel:routeContext id="protocolos-route-context">
 	
 		<camel:route id="protocolo-amq-composicion-poc-sms">
-            <camel:from uri="direct:composicion-poc-sms-queue"/>
+            <camel:from uri="activemq:composicion-poc-sms-queue"/>
             <camel:log message="Reciviendo solicitud de procesamiento en servicio de protocolo protocolo-amq-composicion-poc-sms con mensaje: ${body}"/>
+            <camel:to uri="direct:composicion-poc-sms"/>
+        </camel:route>
+        
+        <camel:route id="protocolo-soap-composicion-poc-sms" streamCache="true">
+            <camel:from uri="cxf:bean:notificationsSoapService?dataFormat=PAYLOAD"/>
+            <camel:log message="Reciviendo solicitud de procesamiento en servicio de protocolo protocolo-soap-composicion-poc-sms con mensaje: ${body}"/>
+            <camel:to uri="direct:composicion-poc-sms"/>
+        </camel:route>
+        
+        <camel:route id="protocolo-amqp-composicion-poc-sms" streamCache="true">
+            <camel:from uri="rabbitmq://${connectors.amqp.middleware.host}:${connectors.amqp.middleware.port}/orders-exchange?autoDelete=false&amp;queue=orders-bridge-queue&amp;routingKey=orders-key"/>
+            <camel:log message="Reciviendo solicitud de procesamiento en servicio de protocolo protocolo-amqp-composicion-poc-sms con mensaje: ${body}"/>
             <camel:to uri="direct:composicion-poc-sms"/>
         </camel:route>
 

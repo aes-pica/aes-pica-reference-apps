@@ -18,7 +18,16 @@
 		<camel:route id="adaptador-canonico-sms">
 			<camel:from uri="direct:adaptador-canonico-sms" />
 			<camel:log message="Reciviendo solicitud de procesamiento en adaptador-canonico-sms con mensaje: ${body}" />
-			<camel:to uri="mock:target-sms" />
+			<camel:to uri="xslt:spring/routes-adaptadores-canonicos/xslt/sms-transformer.xsl" />
+			<camel:log message="Resultado de la transformacion: ${body}" />
+			
+			<camel:removeHeaders pattern="*"/>
+			
+			<camel:setHeader headerName="SOAPAction">
+    			<camel:simple>http://claro.com.co/publicaciones/publicador-sms/publicar</camel:simple>
+			</camel:setHeader>
+			
+			<camel:to uri="cxf:bean:smsSoapClient?dataFormat=PAYLOAD" />
 		</camel:route>
 
 	</camel:routeContext>

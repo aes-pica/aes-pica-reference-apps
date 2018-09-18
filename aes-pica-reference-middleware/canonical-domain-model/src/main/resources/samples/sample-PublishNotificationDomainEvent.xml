@@ -13,7 +13,17 @@
 	</ns1:header>
 	<ns1:notification>
 		<ns12:targetNumber>3124578963</ns12:targetNumber>
-		<ns12:message>this is a poc sample message</ns12:message>
+		<ns12:message>this is a poc sample message 1</ns12:message>
+		<ns12:countryCode>+57</ns12:countryCode>
+	</ns1:notification>
+	<ns1:notification>
+		<ns12:targetNumber>3124578963</ns12:targetNumber>
+		<ns12:message>this is a poc sample message 2</ns12:message>
+		<ns12:countryCode>+57</ns12:countryCode>
+	</ns1:notification>
+	<ns1:notification>
+		<ns12:targetNumber>3124578963</ns12:targetNumber>
+		<ns12:message>this is a poc sample message 3</ns12:message>
 		<ns12:countryCode>+57</ns12:countryCode>
 	</ns1:notification>
 </ns1:PublishNotificationDomainEvent>

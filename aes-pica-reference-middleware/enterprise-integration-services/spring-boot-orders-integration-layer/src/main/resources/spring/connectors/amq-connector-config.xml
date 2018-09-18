@@ -10,5 +10,25 @@
 	<!-- AMQ CONFIGURATION INFO -->
 	<!-- ================================================================= -->
 	
+	<bean class="org.apache.activemq.ActiveMQConnectionFactory" id="jmsConnectionFactory">
+        <property name="brokerURL" value="tcp://${connectors.amq.middleware.host}:${connectors.amq.middleware.port}"/>
+        <property name="userName" value="${connectors.amq.middleware.user}"/>
+        <property name="password" value="${connectors.amq.middleware.password}"/>
+    </bean>
+    
+    <bean class="org.apache.activemq.pool.PooledConnectionFactory"
+        destroy-method="stop" id="pooledConnectionFactory" init-method="start">
+        <property name="maxConnections" value="${connectors.amq.middleware.maxConnections}"/>
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+    </bean>
+    
+    <bean class="org.apache.camel.component.jms.JmsConfiguration" id="jmsConfig">
+        <property name="connectionFactory" ref="pooledConnectionFactory"/>
+        <property name="concurrentConsumers" value="${connectors.amq.middleware.concurrentConsumers}"/>
+    </bean>
+    
+    <bean class="org.apache.activemq.camel.component.ActiveMQComponent" id="activemq">
+        <property name="configuration" ref="jmsConfig"/>
+    </bean>
 	
 </beans>

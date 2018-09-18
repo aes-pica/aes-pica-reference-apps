@@ -13,12 +13,21 @@
 	<!-- INTEGRATION AND COMPOSITION -->
 	<!-- ================================================================= -->
 
-	<camel:routeContext id="composiciones-route-context">
+	<camel:routeContext id="composiciones-route-context"
+		xmlns:ns1="http://aes-pica-javeriana/enterprise-model/framework/domain-events/1.0.0"
+		xmlns:ns11="http://aes-pica-javeriana/enterprise-model/framework/common-artifacts/1.0.0"
+		xmlns:ns12="http://aes-pica-javeriana/enterprise-model/framework/entities/1.0.0">
 
 		<camel:route id="composicion-poc-sms">
 			<camel:from uri="direct:composicion-poc-sms" />
 			<camel:log message="Reciviendo solicitud de procesamiento en servicio composicion composicion-poc-sms con mensaje: ${body}" />
-			<camel:to uri="direct:adaptador-canonico-sms" />
+
+			<camel:split>
+				<camel:xpath>/ns1:PublishNotificationDomainEvent/ns1:notification</camel:xpath>
+				<camel:log message="Token obtenido al dividir notificaciones: ${body}" />
+				<camel:to uri="direct:adaptador-canonico-sms" />
+			</camel:split>
+
 		</camel:route>
 
 	</camel:routeContext>

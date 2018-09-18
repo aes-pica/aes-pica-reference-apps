@@ -10,18 +10,46 @@
 	
 	<import resource="classpath:META-INF/cxf/cxf.xml"/>
 	
+	<bean id="inInterceptor" class="org.apache.cxf.interceptor.LoggingInInterceptor" />
+	<bean id="outInterceptor" class="org.apache.cxf.interceptor.LoggingOutInterceptor" />
+	
+	
 	<!-- ================================================================= -->
 	<!-- SOAP CXF APIS -->
 	<!-- ================================================================= -->
 	
-	
+
+	<cxf:cxfEndpoint id="notificationsSoapService" 
+		address="/notifications-soap-gateway" wsdlURL="classpath:/apis/soap-notifications.wsdl"
+		endpointName="s:soap-notificationsSOAP" serviceName="s:soap-notifications"
+		xmlns:s="http://aes-pica-javeriana/enterprise-services/framework/notifications/1.0.0">
+
+		<cxf:inInterceptors>
+			<ref bean="inInterceptor" />
+		</cxf:inInterceptors>
+
+		<cxf:outInterceptors>
+			<ref bean="outInterceptor" />
+		</cxf:outInterceptors>
+	</cxf:cxfEndpoint>	
 	
 	<!-- ================================================================= -->
 	<!-- SOAP CXF CLIENTS -->
 	<!-- ================================================================= -->
 
-	<bean id="inInterceptor" class="org.apache.cxf.interceptor.LoggingInInterceptor" />
-	<bean id="outInterceptor" class="org.apache.cxf.interceptor.LoggingOutInterceptor" />
 
+	<cxf:cxfEndpoint id="smsSoapClient" 
+		address="http://${connectors.soap.sms.host}:${connectors.soap.sms.port}/mockpublicador-sms" wsdlURL="classpath:/plataforma-sms/publicador-sms.wsdl"
+		endpointName="s:publicador-smsSOAP" serviceName="s:publicador-sms"
+		xmlns:s="http://claro.com.co/publicaciones/publicador-sms/">
+
+		<cxf:inInterceptors>
+			<ref bean="inInterceptor" />
+		</cxf:inInterceptors>
+
+		<cxf:outInterceptors>
+			<ref bean="outInterceptor" />
+		</cxf:outInterceptors>
+	</cxf:cxfEndpoint>
 
 </beans>
