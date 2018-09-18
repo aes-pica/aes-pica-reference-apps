@@ -10,7 +10,7 @@
 
 
 	<!-- ================================================================= -->
-	<!-- CANONICAL ADAPTER ROUTES -->
+	<!-- CANONICAL ADAPTER -->
 	<!-- ================================================================= -->
 
 	<camel:routeContext id="adaptadores-canonicos-route-context">

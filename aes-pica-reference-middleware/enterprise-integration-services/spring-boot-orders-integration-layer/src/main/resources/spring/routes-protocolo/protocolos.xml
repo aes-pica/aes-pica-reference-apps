@@ -10,7 +10,7 @@
 	
 
 	<!-- ================================================================= -->
-	<!-- INTEGRATION AND COMPOSITION -->
+	<!-- PROTOCOL EXPOSITION FOR REMOTE SERVICES -->
 	<!-- ================================================================= -->
 	
 	<camel:routeContext id="protocolos-route-context">
