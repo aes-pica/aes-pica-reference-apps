@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ns1="http://aes-pica-javeriana/enterprise-model/framework/domain-events/1.0.0"
+	xmlns:common="http://aes-pica-javeriana/enterprise-model/framework/common-artifacts/1.0.0"
+	xmlns:entities="http://aes-pica-javeriana/enterprise-model/framework/entities/1.0.0"
+	targetNamespace="http://aes-pica-javeriana/enterprise-model/framework/domain-events/1.0.0"
+	elementFormDefault="qualified">
+
+
+	<xsd:import schemaLocation="javeriana-common-artifacts.xsd"
+		namespace="http://aes-pica-javeriana/enterprise-model/framework/common-artifacts/1.0.0" />
+
+	<xsd:import schemaLocation="javeriana-entidades.xsd"
+		namespace="http://aes-pica-javeriana/enterprise-model/framework/entities/1.0.0" />
+
+
+	<xsd:complexType name="PublishNotificationDomainEvent">
+		<xsd:sequence>
+			<xsd:element name="header" type="common:MessageHeaders" />
+			<xsd:element name="notification" type="entities:SMSNotification" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="PublishNotificationDomainEvent" type="ns1:PublishNotificationDomainEvent"/>
+
+</xsd:schema>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ns1="http://aes-pica-javeriana/enterprise-model/framework/common-artifacts/1.0.0"
+	targetNamespace="http://aes-pica-javeriana/enterprise-model/framework/common-artifacts/1.0.0"
+	elementFormDefault="qualified">
+
+	<xsd:complexType name="MessageHeaders">
+		<xsd:sequence>
+			<xsd:element name="messageId" type="xsd:string" />
+			<xsd:element name="transactionDate" type="xsd:date" />
+			<xsd:element name="channel" type="xsd:string" />
+			<xsd:element name="user" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+
+</xsd:schema>

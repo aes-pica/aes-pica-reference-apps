@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        
+	http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+	
+	
+	<context:property-placeholder location="classpath:integration-layer-configuration.properties" />
+	
+	<context:component-scan base-package="co.edu.javeriana.foundation.middleware.context" />
+	<context:component-scan base-package="co.edu.javeriana.middleware.composition.controllers" />
+	
+	
+	<!-- ================================================================= -->
+	<!-- CONNECTORS CONFIGURATION -->
+	<!-- ================================================================= -->
+	
+	<import resource="connectors/amq-connector-config.xml"/>
+	<import resource="connectors/soap-cxf-connector-config.xml"/>
+
+	
+	<!-- ================================================================= -->
+	<!-- EXTERNAL ROUTES -->
+	<!-- ================================================================= -->
+
+	<import resource="routes-adaptadores-canonicos/adaptadores-canonicos.xml"/>
+	<import resource="routes-integracion-composicion/composiciones.xml"/>
+	<import resource="routes-protocolo/protocolos.xml"/>
+
+
+	<!-- ================================================================= -->
+	<!-- MAIN CAMEL CONTEXT -->
+	<!-- ================================================================= -->
+	
+	<camel:camelContext id="orders-camel-context">
+		
+		<camel:routeContextRef ref="adaptadores-canonicos-route-context"/>
+		<camel:routeContextRef ref="composiciones-route-context"/>
+		<camel:routeContextRef ref="protocolos-route-context"/>
+
+    </camel:camelContext>
+	
+</beans>

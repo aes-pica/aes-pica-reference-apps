@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        
+	http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+
+	<!-- ================================================================= -->
+	<!-- CANONICAL ADAPTER ROUTES -->
+	<!-- ================================================================= -->
+
+	<camel:routeContext id="adaptadores-canonicos-route-context">
+
+		<camel:route id="adaptador-canonico-sms">
+			<camel:from uri="direct:adaptador-canonico-sms" />
+			<camel:log message="Reciviendo solicitud de procesamiento en adaptador-canonico-sms con mensaje: ${body}" />
+			<camel:to uri="mock:target-sms" />
+		</camel:route>
+
+	</camel:routeContext>
+
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:PublishNotificationDomainEvent
+	xmlns:ns1="http://aes-pica-javeriana/enterprise-model/framework/domain-events/1.0.0"
+	xmlns:ns11="http://aes-pica-javeriana/enterprise-model/framework/common-artifacts/1.0.0"
+	xmlns:ns12="http://aes-pica-javeriana/enterprise-model/framework/entities/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://aes-pica-javeriana/enterprise-model/framework/domain-events/1.0.0 javeriana-domain-events.xsd ">
+	<ns1:header>
+		<ns11:messageId>000001</ns11:messageId>
+		<ns11:transactionDate>2001-01-01</ns11:transactionDate>
+		<ns11:channel>MOBILE-CHANNEL</ns11:channel>
+		<ns11:user>aes</ns11:user>
+	</ns1:header>
+	<ns1:notification>
+		<ns12:targetNumber>3124578963</ns12:targetNumber>
+		<ns12:message>this is a poc sample message</ns12:message>
+		<ns12:countryCode>+57</ns12:countryCode>
+	</ns1:notification>
+</ns1:PublishNotificationDomainEvent>

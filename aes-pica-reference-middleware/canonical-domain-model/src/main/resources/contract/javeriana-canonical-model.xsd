@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:base="http://aes-pica-javeriana/enterprise-model/framework/solution-entities/1.0.0"
+	xmlns:common="http://aes-pica-javeriana/enterprise-model/framework/common-artifacts/1.0.0"
+	xmlns:entities="http://aes-pica-javeriana/enterprise-model/framework/entities/1.0.0"
+	xmlns:de="http://aes-pica-javeriana/enterprise-model/framework/domain-events/1.0.0"
+	targetNamespace="http://aes-pica-javeriana/enterprise-model/framework/solution-entities/1.0.0"
+	elementFormDefault="qualified">
+
+	<xsd:import schemaLocation="javeriana-domain-events.xsd"
+		namespace="http://aes-pica-javeriana/enterprise-model/framework/domain-events/1.0.0" />
+
+	<xsd:import schemaLocation="javeriana-common-artifacts.xsd"
+		namespace="http://aes-pica-javeriana/enterprise-model/framework/common-artifacts/1.0.0" />
+
+	<xsd:import schemaLocation="javeriana-entidades.xsd"
+		namespace="http://aes-pica-javeriana/enterprise-model/framework/entities/1.0.0" />
+
+
+</xsd:schema>
