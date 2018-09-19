@@ -28,6 +28,8 @@
 				<camel:to uri="direct:adaptador-canonico-sms" />
 			</camel:split>
 
+			<camel:to uri="direct:adaptador-canonico-mainframe-tcpip" />
+
 		</camel:route>
 
 	</camel:routeContext>

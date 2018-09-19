@@ -29,7 +29,17 @@
 			
 			<camel:to uri="cxf:bean:smsSoapClient?dataFormat=PAYLOAD" />
 		</camel:route>
+		
+		
+		<camel:route id="adaptador-canonico-mainframe-tcpip">
+			<camel:from uri="direct:adaptador-canonico-mainframe-tcpip" />
+			<camel:log message="Reciviendo solicitud de procesamiento en adaptador-canonico-mainframe-tcpip con mensaje: ${body}" />
+			<camel:to uri="bean:composicionPocSmsController?method=transformarATrama"/>
+			<camel:to uri="netty4:tcp://localhost:4700?textline=true&amp;sync=true" />
+			<camel:log message="Resultado del endpoint tcp-ip con mensaje: ${body}" />
+		</camel:route>
 
 	</camel:routeContext>
+	
 
 </beans>

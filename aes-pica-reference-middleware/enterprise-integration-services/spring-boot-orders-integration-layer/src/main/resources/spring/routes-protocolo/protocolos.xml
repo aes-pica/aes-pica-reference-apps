@@ -28,7 +28,7 @@
         </camel:route>
         
         <camel:route id="protocolo-amqp-composicion-poc-sms" streamCache="true">
-            <camel:from uri="rabbitmq://${connectors.amqp.middleware.host}:${connectors.amqp.middleware.port}/orders-exchange?autoDelete=false&amp;queue=orders-bridge-queue&amp;routingKey=orders-key"/>
+            <camel:from uri="rabbitmq://{{connectors.amqp.middleware.host}}:{{connectors.amqp.middleware.port}}/orders-exchange?autoDelete=false&amp;queue=orders-bridge-queue&amp;routingKey=orders-key"/>
             <camel:log message="Reciviendo solicitud de procesamiento en servicio de protocolo protocolo-amqp-composicion-poc-sms con mensaje: ${body}"/>
             <camel:to uri="direct:composicion-poc-sms"/>
         </camel:route>

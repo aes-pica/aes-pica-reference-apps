@@ -17,6 +17,10 @@ public class ComposicionPocSmsController extends IntegrationController {
 		super();
 	}
 
+	public void transformarATrama(final Exchange exchange) {
+		exchange.getOut().setBody("la transaccion ha sido finalizada" +"\n");
+	}
+	
 	public void salvarEstado(final Exchange exchange) {
 		Object body = exchange.getIn().getBody();
 		LOGGER.info("salvando copia del mensaje canonico original: {}", body);
